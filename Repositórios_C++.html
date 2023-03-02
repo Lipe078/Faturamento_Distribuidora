@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meus repositórios C++</title>
+  </head>
+  <body>
+    <h1>Faturamento Distribuidora</h1>
+    <pre>
+      <code>
+        #include <iostream>
+            #include <vector>
+            
+            using namespace std;
+            
+            int main() {
+                // Lê os valores de faturamento diário do usuário e armazena em um vetor
+                vector<double> faturamento_diario;
+                double valor;
+                cout << "Digite o faturamento diário do mês:\n";
+                while (cin >> valor) {
+                    faturamento_diario.push_back(valor);
+                }
+            
+                // Calcula o menor valor de faturamento
+                double menor_valor = faturamento_diario[0];
+                for (int i = 1; i < faturamento_diario.size(); i++) {
+                    if (faturamento_diario[i] < menor_valor) {
+                        menor_valor = faturamento_diario[i];
+                    }
+                }
+            
+                // Calcula o maior valor de faturamento
+                double maior_valor = faturamento_diario[0];
+                for (int i = 1; i < faturamento_diario.size(); i++) {
+                    if (faturamento_diario[i] > maior_valor) {
+                        maior_valor = faturamento_diario[i];
+                    }
+                }
+            
+                // Calcula a média mensal de faturamento
+                double media_mensal = 0.0;
+                int dias_com_faturamento = 0;
+                for (int i = 0; i < faturamento_diario.size(); i++) {
+                    if (faturamento_diario[i] > 0) {
+                        media_mensal += faturamento_diario[i];
+                        dias_com_faturamento++;
+                    }
+                }
+                media_mensal /= dias_com_faturamento;
+            
+                // Conta o número de dias com faturamento superior à média mensal
+                int dias_acima_da_media = 0;
+                for (int i = 0; i < faturamento_diario.size(); i++) {
+                    if (faturamento_diario[i] > media_mensal) {
+                        dias_acima_da_media++;
+                    }
+                }
+            
+                // Imprime os resultados
+                cout << "Menor valor de faturamento diário: " << menor_valor << endl;
+                cout << "Maior valor de faturamento diário: " << maior_valor << endl;
+                cout << "Número de dias com faturamento acima da média: " << dias_acima_da_media << endl;
+            
+                return 0;
+            }
+        }
+      </code>
+    </pre>
+
+    <h1>Faturamento Percentual Estados</h1>
+    <pre>
+      <code>
+        #include <iostream>
+            #include <iomanip>
+            
+            using namespace std;
+            
+            int main() {
+                // Definindo os valores de faturamento mensal de cada estado
+                double sp = 67836.43;
+                double rj = 36678.66;
+                double mg = 29229.88;
+                double es = 27165.48;
+                double outros = 19849.53;
+            
+                // Calculando o valor total mensal da distribuidora
+                double total = sp + rj + mg + es + outros;
+            
+                // Calculando o percentual de representação de cada estado
+                double perc_sp = (sp / total) * 100;
+                double perc_rj = (rj / total) * 100;
+                double perc_mg = (mg / total) * 100;
+                double perc_es = (es / total) * 100;
+                double perc_outros = (outros / total) * 100;
+            
+                // Exibindo os resultados
+                cout << fixed << setprecision(2);
+                cout << "Percentual de representacao de cada estado:\n";
+                cout << "SP: " << perc_sp << "%\n";
+                cout << "RJ: " << perc_rj << "%\n";
+                cout << "MG: " << perc_mg << "%\n";
+                cout << "ES: " << perc_es << "%\n";
+                cout << "Outros: " << perc_outros << "%\n";
+            
+                return 0;
+            } 
+      </code>
+    </pre>
+
+    <h1>Fibonacci</h1>
+    <pre>
+      <code>
+        #include <iostream>
+            using namespace std;
+            
+            int main() {
+                int n, num1 = 0, num2 = 1, proximo_num;
+                bool encontrado = false;
+                
+                // leitura do número informado
+                cout << "Digite um número: ";
+                cin >> n;
+                
+                // cálculo da sequência de Fibonacci
+                while (proximo_num <= n) {
+                    if (proximo_num == n) {
+                        encontrado = true;
+                        break;
+                    }
+                    proximo_num = num1 + num2;
+                    num1 = num2;
+                    num2 = proximo_num;
+                }
+                
+                // exibição da mensagem de resultado
+                if (encontrado) {
+                    cout << n << " pertence à sequência de Fibonacci" << endl;
+                } else {
+                    cout << n << " não pertence à sequência de Fibonacci" << endl;
+                }
+                
+                return 0;
+            }     
+      </code>
+    </pre>
+
+    <h1>Invert String</h1>
+    <pre>
+      <code>
+        #include <iostream>
+            #include <string>
+            
+            using namespace std;
+            
+            void inverteString(string& s) {
+                int tamanho = s.length();
+                for(int i = 0; i < tamanho/2; i++) {
+                    char temp = s[i];
+                    s[i] = s[tamanho-i-1];
+                    s[tamanho-i-1] = temp;
+                }
+            }
+            
+            int main() {
+                string s;
+                cout << "Digite uma string: ";
+                getline(cin, s);
+                inverteString(s);
+                cout << "String invertida: " << s << endl;
+                return 0;
+            }    
+      </code>
+    </pre>
+  </body>
+</html>
